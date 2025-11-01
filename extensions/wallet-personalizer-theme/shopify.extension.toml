@@ -1,0 +1,7 @@
+name = "Wallet Personalizer Theme"
+description = "UI para personalización en página de producto"
+type = "theme"
+api_version = "2025-10"
+
+[settings]
+target = "body"

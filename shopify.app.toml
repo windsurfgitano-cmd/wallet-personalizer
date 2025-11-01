@@ -1,0 +1,24 @@
+name = "wallet-personalizer"
+client_id = "27b2989a76c599c13e1f21cb9498b381"
+application_url = "https://wallet-personalizer.ngrok.io"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access-scopes
+scopes = "write_products,read_products,write_orders,read_orders"
+
+[auth]
+redirect_urls = [
+  "http://127.0.0.1:3457/auth/callback",
+  "https://wallet-personalizer.ngrok.io/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-10"
+
+[[webhooks.subscriptions]]
+topics = [ "app/uninstalled" ]
+uri = "/webhooks"
+
+[pos]
+embedded = false

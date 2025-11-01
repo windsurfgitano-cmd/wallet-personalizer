@@ -1,0 +1,56 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Shop {
+  id              String    @id @unique
+  shopifyDomain   String    @unique
+  accessToken     String
+  
+  settings        CustomizationSetting?
+  products        ProductCustomization[]
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model CustomizationSetting {
+  id                    String   @id @default(cuid())
+  shopId                String   @unique
+  shop                  Shop     @relation(fields: [shopId], references: [id], onDelete: Cascade)
+  
+  // Precios
+  basePriceInitials     Float    @default(8.00)
+  basePricePhrase       Float    @default(12.00)
+  
+  // Límites
+  maxCharsInitials      Int      @default(3)
+  maxCharsPhrase        Int      @default(20)
+  
+  // Features
+  enableInitials        Boolean  @default(true)
+  enablePhrase          Boolean  @default(true)
+  enablePreview         Boolean  @default(true)
+  
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+}
+
+model ProductCustomization {
+  id                String   @id @default(cuid())
+  shopId            String
+  shop              Shop     @relation(fields: [shopId], references: [id])
+  productHandle     String
+  
+  enabledTypes      String   @default("iniciales,frase")
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  @@unique([shopId, productHandle])
+}
