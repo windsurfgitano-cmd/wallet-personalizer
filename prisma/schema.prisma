@@ -54,3 +54,11 @@ model ProductCustomization {
   
   @@unique([shopId, productHandle])
 }
+
+model Session {
+  id        String   @id
+  data      Json
+  shop      String?  // opcional: puede usarse para limpieza por dominio
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
