@@ -16,7 +16,8 @@
     "docker-start": "node ./bin/start.js",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "shopify": "shopify",
-    "prisma": "prisma"
+    "prisma": "prisma",
+    "create:products": "node ./scripts/create-products.mjs"
   },
   "dependencies": {
     "@prisma/client": "^5.7.0",

@@ -1,5 +1,6 @@
 name = "Wallet Personalizer Theme"
 description = "UI para personalización en página de producto"
+uid = "4106a4b9-9903-311e-3fd7-005686bfa9f194dc4591"
 type = "theme"
 api_version = "2025-10"
 
